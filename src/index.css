@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.LOGIN{
+    background: linear-gradient(45deg,green,rgb(233, 223, 223));
+}
+
+.LOGINBOX{
+    background: linear-gradient(60deg,rgb(44, 142, 44),rgb(237, 227, 227));
+}
+
+.SIGN{
+    background: linear-gradient(45deg,green,rgb(233, 223, 223));
+}
+.SIGNBOX{
+    background: linear-gradient(90deg,rgb(44, 142, 42),rgb(182, 215, 185));
+}
+
+.logHeading{
+    font-family: Arial, Helvetica, sans-serif;
+}
