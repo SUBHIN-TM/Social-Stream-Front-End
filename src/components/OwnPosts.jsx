@@ -11,7 +11,7 @@ const OwnPosts=({post,OWNPOSTS})=>{
     
     const [likeList,setLikeList]=useState([post.likes])
     const [commentBox,setCommentBox] =useState(false)
-  
+    console.log(likeList);
     const navigate=useNavigate()
         
     const likefuction= async(id,userId)=>{
@@ -26,8 +26,7 @@ const OwnPosts=({post,OWNPOSTS})=>{
           }
          let response=await axios.post('http://localhost:3000/addLike',{postId:id,userId:userId,ownProfile:OWNPROFILEPOST})
            let post=response.data.result.posts.filter((posts) => posts._id ==id)
-          //  console.log( "like list",post);
-          //  console.log("like count", post[0].likes.length);
+           setLikeList(post[0].likes)
            setLikeCount(post[0].likes.length)
         }
       } catch (error) {
