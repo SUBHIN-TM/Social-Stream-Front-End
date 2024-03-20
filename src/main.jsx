@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from 'axios';
-
+import { Provider } from 'react-redux';  //BRIDGE BW REACT AND REDUX 
 
 import HomePage from './components/HomePage.jsx'
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 import Profile from './components/Profile.jsx';
+import appStore from './utils/appStore.js';
 
 
 axios.interceptors.request.use(
@@ -27,15 +28,15 @@ axios.interceptors.request.use(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Provider store={appStore}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/profile" element={<Profile/>} />
-
-
       </Routes>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );

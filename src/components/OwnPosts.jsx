@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,8 +12,12 @@ const OwnPosts=({post,OWNPOSTS})=>{
     
     const [likeList,setLikeList]=useState([post.likes])
     const [commentBox,setCommentBox] =useState(false)
-    console.log(likeList);
+    // console.log(likeList);
     const navigate=useNavigate()
+
+    // const USER=useSelector((store) => store.user.details) 
+    const userRedux=useSelector((store) => store.user.details)
+    // console.log( "post resux",userRedux.name);
         
     const likefuction= async(id,userId)=>{
       try {
@@ -81,7 +86,10 @@ const OwnPosts=({post,OWNPOSTS})=>{
             <img className=" sm:w-10/12 lg:w-11/12 w-10/12 h-[200px]" src={post.postImage} alt="" />
          </div>
          <div className="flex justify-around p-4">
-            <div><span onClick={()=> likefuction(post._id,post.userId)} className="cursor-pointer">Like👍</span>({likeCount})</div>
+           {likeList.includes(userRedux.name) ?( <div><span onClick={()=> likefuction(post._id,post.userId)} className="cursor-pointer">UnLike 👎</span>({likeCount})</div>):
+           ( <div><span onClick={()=> likefuction(post._id,post.userId)} className="cursor-pointer">Like👍</span>({likeCount})</div>)
+           }
+           
            
             <div ><span onClick={()=> commentBoxToggle()} className="cursor-pointer">Comments ({commentCount})</span> </div> 
          </div>
