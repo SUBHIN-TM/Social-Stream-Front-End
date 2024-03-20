@@ -1,16 +1,16 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const OwnPosts=({post})=>{
+const OwnPosts=({post,OWNPOSTS})=>{
     const [likeCount,setLikeCount] = useState(post.likes.length)
     const [commentCount,setcommentCount] = useState(post.comments.length)
-    const [commentContent,setCommentContent]=useState()
-
+    const [commentContent,setCommentContent]=useState("")
+    
     const [likeList,setLikeList]=useState([post.likes])
     const [commentBox,setCommentBox] =useState(false)
-    // console.log(likeList);
   
     const navigate=useNavigate()
         
@@ -20,10 +20,14 @@ const OwnPosts=({post})=>{
         if(!token){
             navigate('/login')
         }else{
-         let response=await axios.post('http://localhost:3000/addLike',{postId:id,userId:userId})
+          let OWNPROFILEPOST=false
+          if(OWNPOSTS){  //IF CHECKING THE POSTS CALL FROM HOME OR PROFILE.INCASE CALL TO DO LIKE FROM PROFILE THE POST OWNER ID TAKE TOKEN ID AS SAME IN BACK END
+             OWNPROFILEPOST=true
+          }
+         let response=await axios.post('http://localhost:3000/addLike',{postId:id,userId:userId,ownProfile:OWNPROFILEPOST})
            let post=response.data.result.posts.filter((posts) => posts._id ==id)
-           console.log( "like list",post);
-           console.log("like count", post[0].likes.length);
+          //  console.log( "like list",post);
+          //  console.log("like count", post[0].likes.length);
            setLikeCount(post[0].likes.length)
         }
       } catch (error) {
@@ -37,10 +41,16 @@ const OwnPosts=({post})=>{
           if(!token){
               navigate('/login')
           }else{
-           let response=await axios.post('http://localhost:3000/addComment',{postId:id,userId:userId,comment:commentContent})
+            let OWNPROFILEPOST=false
+            if(OWNPOSTS){  //IF CHECKING THE POSTS CALL FROM HOME OR PROFILE.INCASE CALL TO DO LIKE FROM PROFILE THE POST OWNER ID TAKE TOKEN ID AS SAME IN BACK END
+               OWNPROFILEPOST=true
+            }
+           let response=await axios.post('http://localhost:3000/addComment',{postId:id,userId:userId,comment:commentContent,ownProfile:OWNPROFILEPOST})
            let post=response.data.result.posts.filter((posts) => posts._id ==id)
            console.log("like count", post[0].comments.length);
-           setcommentCount(post[0].likes.length)
+           setcommentCount(post[0].comments.length)
+           
+           console.log("secmnt",commentCount);
           }
         } catch (error) {
           console.error(error);

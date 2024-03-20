@@ -37,7 +37,7 @@ const HomePage=()=>{
          <Navbar/>
          <div className="pl-20 mt-8 flex flex-col gap-y-9">
          {allPosts.map((post)=>(
-          <OwnPosts post={post} key={post._id}/>
+          <OwnPosts post={post} key={post._id}  />
         ))}
          </div>
          

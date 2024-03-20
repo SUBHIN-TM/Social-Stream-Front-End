@@ -227,7 +227,7 @@ const Profile=()=>{
      
       <div className="flex flex-col gap-y-7 items-center p-8 justify-center">
         {profile.posts.map((post)=>(
-          <OwnPosts post={post} key={post._id}/>
+          <OwnPosts post={post} key={post._id} OWNPOSTS={true}/>
         ))}
        
       </div>
