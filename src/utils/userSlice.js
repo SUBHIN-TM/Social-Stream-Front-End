@@ -10,7 +10,7 @@ const userSlice = createSlice({
            state.details=action.payload
           },
           clearUser:(state) =>{
-            state.details.length =0
+            state.details =""
           }
     }
 })

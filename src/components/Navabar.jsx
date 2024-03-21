@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {viewDetais,clearUser} from "../utils/userSlice"
 
 
-const Navbar= ()=> {
+const Navbar= ({onRefreash })=> {
     const [user,setUser]=useState("")
     const navigate=useNavigate()
    
@@ -17,6 +17,8 @@ const Navbar= ()=> {
      useEffect(()=>{
         homeFetch()
      },[])
+
+    //  console.log(onRefreash);
 
      const homeFetch=async()=>{
         try {
@@ -32,7 +34,7 @@ const Navbar= ()=> {
           
      }
 
-     console.log("redux store",USER);
+    //  console.log("redux store",USER);
 
 
     const logout=async()=>{
@@ -41,7 +43,7 @@ const Navbar= ()=> {
     axios.defaults.headers.common["Authorization"] = null;
     setUser("") 
     navigate('/')
-    window.location.reload()
+    onRefreash()
      }
     //  console.log(user);
 
