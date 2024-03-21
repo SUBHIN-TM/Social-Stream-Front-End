@@ -87,10 +87,12 @@ const Profile=()=>{
                 }
             });
             console.log("Response:", response.data);
-            toast.success(response.data.message)
+            toast.success("POSTED")
+           
             setProfile(response.data.result)  
-            setTitle("")
-            setFile("")
+            // setTitle("")
+            // setFile("")
+            // navigate('/profile')
             console.log(response.data.result);
 
           
@@ -168,11 +170,11 @@ const Profile=()=>{
         </div>
 
         {details && 
-        ( <ul className="border-2 rounded-lg border-black w-6/12 h-[300px] sm:w-5/12 lg:w-3/12 mx-10 my-10 p-3">
+        ( <ul className="border-2 rounded-lg border-black w-6/12 h-[250px] sm:w-5/12 lg:w-3/12 mx-10 my-10 p-3">
             <li className=" w-[100px] h-[100px]  mx-auto my-4 "><img className=" rounded-3xl object-cover h-full w-full" src={profile.profileImage} alt="" /></li>
             <li className="mt-3 text-center">Name : {profile.name}</li>
             <li className="text-center">Email : {profile.mail}</li>
-            <li className="text-center">id : {profile._id}</li>
+            
         </ul>
         )}
  
