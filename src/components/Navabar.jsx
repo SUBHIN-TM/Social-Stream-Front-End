@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {viewDetais,clearUser} from "../utils/userSlice"
 
 
-const Navbar= ({onRefreash })=> {
+const Navbar= ()=> {
     const [user,setUser]=useState("")
     const navigate=useNavigate()
    
@@ -18,7 +18,7 @@ const Navbar= ({onRefreash })=> {
         homeFetch()
      },[])
 
-    //  console.log(onRefreash);
+  
 
      const homeFetch=async()=>{
         try {
@@ -43,7 +43,7 @@ const Navbar= ({onRefreash })=> {
     axios.defaults.headers.common["Authorization"] = null;
     setUser("") 
     navigate('/')
-    onRefreash()
+   
      }
     //  console.log(user);
 
@@ -56,13 +56,14 @@ const Navbar= ({onRefreash })=> {
                 (<div className="flex items-center"><button onClick={()=> navigate('/login')} className="border-2 bg-black text-white p-2 rounded-lg">Login</button></div>)}
                 {/* {user && ( <div className="mx-4"><button onClick={()=> navigate('/profile')} className="border-2 bg-black text-white rounded-lg p-2">Profile</button></div>)} */}
                 <div className="mx-4"><button onClick={()=> navigate('/profile')} className="border-2 bg-black text-white rounded-lg p-2">Profile</button></div>
+                <div className="mx-4"><button onClick={()=> navigate('/notifications')} className="border-2 bg-black text-white rounded-lg p-2">Notifications</button></div>
                
             </div>
         </div>
        
-        <div>
+        {/* <div>
           <p>{USER.name}</p>
-        </div>
+        </div> */}
         </>
     )
 }

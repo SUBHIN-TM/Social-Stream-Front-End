@@ -5,11 +5,13 @@ import OwnPosts from "./OwnPosts"
 
 const HomePage=()=>{
     const [allPosts,setAllPosts]=useState([])
+    const[commentRefreash,setCommentRefreash]=useState(0)
 
 
  useEffect(()=>{
+  console.log("called all post fetch");
     allPostFetch()
- },[])
+ },[commentRefreash])
 
  const allPostFetch = async()=>{
   console.log("refreashed");
@@ -30,7 +32,7 @@ const HomePage=()=>{
 
  if(!allPosts){
     return  <div>
-    <Navbar onRefreash={allPostFetch} />
+    <Navbar />
     <h1 className="p-3">Loading....</h1>
    </div>
  }
@@ -40,10 +42,10 @@ const HomePage=()=>{
     return(
         <>
         <div>
-         <Navbar onRefreash={allPostFetch}/>
+         <Navbar/>
          <div className="pl-20 mt-8 flex flex-col gap-y-9">
          {allPosts.map((post)=>(
-          <OwnPosts post={post} key={post._id}  />
+          <OwnPosts post={post} key={post._id}   setCommentRefreash={setCommentRefreash}  />
         ))}
          </div>
          

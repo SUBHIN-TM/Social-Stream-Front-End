@@ -10,6 +10,7 @@ import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 import Profile from './components/Profile.jsx';
 import appStore from './utils/appStore.js';
+import Notifications from './components/Notifications.jsx';
 
 
 axios.interceptors.request.use(
@@ -35,6 +36,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/notifications" element={<Notifications/>} />
+
       </Routes>
     </BrowserRouter>
     </Provider>

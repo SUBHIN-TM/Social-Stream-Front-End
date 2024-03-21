@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
-const OwnPosts=({post,OWNPOSTS})=>{
+const OwnPosts=({post,OWNPOSTS,setCommentRefreash})=>{
     const [likeCount,setLikeCount] = useState(post.likes.length)
     const [commentCount,setcommentCount] = useState(post.comments.length)
     const [commentContent,setCommentContent]=useState("")
@@ -14,7 +15,7 @@ const OwnPosts=({post,OWNPOSTS})=>{
     const [commentBox,setCommentBox] =useState(false)
     // console.log(likeList);
     const navigate=useNavigate()
-
+    
     // const USER=useSelector((store) => store.user.details) 
     const userRedux=useSelector((store) => store.user.details)
     // console.log( "post resux",userRedux.name);
@@ -45,6 +46,9 @@ const OwnPosts=({post,OWNPOSTS})=>{
           if(!token){
               navigate('/login')
           }else{
+            if(!commentContent){
+              return toast.error("Cant be empty")
+            }
             let OWNPROFILEPOST=false
             if(OWNPOSTS){  //IF CHECKING THE POSTS CALL FROM HOME OR PROFILE.INCASE CALL TO DO LIKE FROM PROFILE THE POST OWNER ID TAKE TOKEN ID AS SAME IN BACK END
                OWNPROFILEPOST=true
@@ -53,6 +57,9 @@ const OwnPosts=({post,OWNPOSTS})=>{
            let post=response.data.result.posts.filter((posts) => posts._id ==id)
            console.log("like count", post[0].comments.length);
            setcommentCount(post[0].comments.length)
+           setCommentRefreash(prevCount=> prevCount+1)
+           setCommentContent("")
+           
            
            console.log("secmnt",commentCount);
           }
@@ -111,8 +118,10 @@ const OwnPosts=({post,OWNPOSTS})=>{
           </div>
           )}
         
-
+         
+          <div>  <ToastContainer /></div>
         </div>
+        
     )
 }
 
