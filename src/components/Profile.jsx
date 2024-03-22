@@ -92,8 +92,8 @@ const Profile=()=>{
             toast.success("POSTED")
            
             setProfile(response.data.result)  
-            // setTitle("")
-            // setFile("")
+            setTitle("")
+            setFile("")
             // navigate('/profile')
             console.log(response.data.result);
 
