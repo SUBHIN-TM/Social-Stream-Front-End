@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name:'user',
     initialState:{
-        details:[{}]
+        details:[{}],
+        try:[{}]
     },
     reducers:{
           viewDetais:(state,action) =>{

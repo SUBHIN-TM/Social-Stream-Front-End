@@ -10,9 +10,9 @@ const Navbar= ()=> {
     const navigate=useNavigate()
    
     //SELECTOR //IT WILL GIVE ACCES TO STORE //NOW SUBSCRIBING THE STORE
-     const USER=useSelector((store) => store.user.details) 
+     const USER=useSelector((store) => store.user.details) //NOW USER HAS THE DETAILS OF USER DETAILS DATABASE
      const dispatch =useDispatch() //INSIDE THIS DISPATCH WE HAVE TO MENTION WHAT TYPE OF ACTION THAT WE HAVE PERFORMING
- 
+    
 
      useEffect(()=>{
         homeFetch()
