@@ -77,7 +77,7 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
 
   // console.log("post",post);
   return (
-    <div className="w-6/12 lg:w-3/12 border ">
+    <div className="w-[400px] border ">
       {post.userName && (
         <div className="border-b h-[50px] flex items-center">
           <div className="w-[50px] border h-[50px] rounded-xl"><img src={post.profileImage} className="object-cover h-full w-full" alt="" /></div>

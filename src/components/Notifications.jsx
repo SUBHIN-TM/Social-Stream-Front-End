@@ -33,19 +33,21 @@ const Notifications = () => {
     return (
         <div>
             <Navbar />
-            <div className="w-6/12  p-5 ">
+           
+            <div className=" p-5 sm:flex">
                 <ul>
                     {notifications.map((data) => (
-                        <li onClick={() => { setclickedPost(data._id) }} className="m-1 cursor-pointer" key={data._id}> {data.message} </li>
+                        <li onClick={() => { setclickedPost(data._id) }} className="m-1 cursor-pointer text-blue-500 underline" key={data._id}> {data.message} </li>
                     ))}
-
                 </ul>
-            </div>
-            <div className="flex flex-col gap-y-7 items-center p-8 justify-center">
+                <div className=" ">
                 {clickedPost && AllPosts.filter(post => post.notifications.some(noti => noti._id === clickedPost)).map(filteredPost => (
                     <OwnPosts post={filteredPost} key={filteredPost._id} OWNPOSTS={true} setCommentRefreash={setCommentRefreash} />
                 ))}
             </div>
+                
+            </div>
+           
         </div>
     )
 }
