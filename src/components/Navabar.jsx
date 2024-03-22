@@ -4,11 +4,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {viewDetais,clearUser} from "../utils/userSlice"
-import env from "dotenv"
-env.config()
-
+import { serverLink } from "../../../serverLink"
 
 const Navbar= ()=> {
+
+    useEffect(()=>{
+        window.process ={
+          ...window.process
+        };
+      },[])
+
     const [user,setUser]=useState("")
     const navigate=useNavigate()
    
@@ -21,11 +26,12 @@ const Navbar= ()=> {
         homeFetch()
      },[])
 
+    
   
 
      const homeFetch=async()=>{
         try {
-            let response=await axios.get(process.env.SERVER_LINK)
+            let response=await axios.get(serverLink)
             if(response.data.details){
                 setUser(response.data.details)
                 dispatch(viewDetais(response.data.details));  //IN REDUX BY VIEWDETALS ACTION DEFINED TO STORE THE VALUE TO DATA STORE.

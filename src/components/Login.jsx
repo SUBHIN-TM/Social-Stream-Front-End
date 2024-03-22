@@ -6,15 +6,19 @@ import axios from "axios";
 import {Link,useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import env from "dotenv"
-env.config()
-
+import { serverLink } from "../../../serverLink"
 
 function Login() {
     
     const[name,setName]=useState("");
     const[password,setPassword]=useState("");
     const navigate=useNavigate();
+
+    useEffect(()=>{
+      window.process ={
+        ...window.process
+      };
+    },[])
 
     useEffect(() => {
       const token=localStorage.getItem('token')
@@ -36,7 +40,7 @@ function Login() {
 
     try {
         // console.log(name , password);
-       const response=await axios.post(`${process.env.SERVER_LINK}/login`,{
+       const response=await axios.post(`${serverLink}/login`,{
         name,password
        });
        if(response.data.invalidUser){

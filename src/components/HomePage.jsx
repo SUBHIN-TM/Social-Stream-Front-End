@@ -3,23 +3,23 @@ import { useEffect, useState } from "react"
 import Navbar from "./Navabar"
 import axios from "axios"
 import OwnPosts from "./OwnPosts"
-import env from "dotenv"
-env.config()
+import { serverLink } from "../../../serverLink"
 
 const HomePage=()=>{
     const [allPosts,setAllPosts]=useState([])
     const[commentRefreash,setCommentRefreash]=useState(0)
+  const base = 
 
 
  useEffect(()=>{
-  // console.log("called all post fetch");
+  console.log(base);
     allPostFetch()
  },[commentRefreash])
 
  const allPostFetch = async()=>{
   // console.log("refreashed");
   try {
-    const result=await axios.get(process.env.SERVER_LINK)
+    const result=await axios.get(serverLink)
     if(result.status ==200){
         setAllPosts(result.data.allPosts)
         // console.log(result.data.allPosts.map((data) =>data));

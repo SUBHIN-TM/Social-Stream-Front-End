@@ -5,8 +5,7 @@ import axios from "axios";
 import {Link,useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import env from "dotenv"
-env.config()
+import { serverLink } from "../../../serverLink"
 
 const Signup =()=>{
 const [mailExist,setMailExist] =useState("")
@@ -32,7 +31,7 @@ const navigate=useNavigate()
     }
 
     try {   
-       const response=await axios.post(`${process.env.SERVER_LINK}/signup`,{
+       const response=await axios.post(`${serverLink}/signup`,{
         name,mail,password
        });
       //  console.log("response is",response.data);

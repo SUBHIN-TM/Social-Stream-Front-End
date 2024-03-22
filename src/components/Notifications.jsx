@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./Navabar"
 import axios from "axios";
 import OwnPosts from "./OwnPosts";
-import env from "dotenv"
-env.config()
-
+import { serverLink } from "../../../serverLink"
 
 const Notifications = () => {
     const [notifications, setNotification] = useState("")//ALL USER NOTIFICATION WILL COMES HERE
@@ -21,7 +19,7 @@ const Notifications = () => {
     }, [commentRefreash])
 
     const notific = async () => {
-        const response = await axios.get(`${process.env.SERVER_LINK}/notifications`)
+        const response = await axios.get(`${serverLink}/notifications`)
         setNotification(response.data.notifications)
         setAllPosts(response.data.posts)
     }

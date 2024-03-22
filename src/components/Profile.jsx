@@ -6,9 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OwnPosts from "./OwnPosts";
-import env from "dotenv"
-env.config()
-
+import { serverLink } from "../../../serverLink"
 
 
 
@@ -33,7 +31,7 @@ const Profile=()=>{
    
     const profileFetch=async()=>{
         try {
-            let response=await axios.get(`${process.env.SERVER_LINK}/profile`)
+            let response=await axios.get(`${serverLink}/profile`)
             setProfile(response.data.profileDetails)        
         } catch (error) {
             console.log(error);
@@ -85,7 +83,7 @@ const Profile=()=>{
         formData.append("image", file);
 
         try {
-            const response = await axios.post(`${process.env.SERVER_LINK}/upload`, formData, {
+            const response = await axios.post(`${serverLink}/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -139,7 +137,7 @@ const Profile=()=>{
         formData.append("image", profilePicFile);
 
         try {
-            const response = await axios.post(`${process.env.SERVER_LINK}/profilePicture`, formData, {
+            const response = await axios.post(`${serverLink}/profilePicture`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
