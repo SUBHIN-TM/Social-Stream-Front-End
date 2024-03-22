@@ -31,7 +31,7 @@ const navigate=useNavigate()
        const response=await axios.post('http://localhost:3000/signup',{
         name,mail,password
        });
-       console.log("response is",response.data);
+      //  console.log("response is",response.data);
        if(response.data.registered){
         toast.success("Registration successful. Redirecting to login page...", {
           onClose: () => {

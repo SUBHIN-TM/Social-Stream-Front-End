@@ -32,7 +32,7 @@ function Login() {
      }
 
     try {
-        console.log(name , password);
+        // console.log(name , password);
        const response=await axios.post('http://localhost:3000/login',{
         name,password
        });

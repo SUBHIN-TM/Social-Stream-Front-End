@@ -13,7 +13,7 @@ const Notifications = () => {
 
 
     useEffect(() => {
-        console.log("called");
+        // console.log("called");
         notific()
     }, [commentRefreash])
 

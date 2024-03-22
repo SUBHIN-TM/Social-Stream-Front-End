@@ -9,12 +9,12 @@ const HomePage=()=>{
 
 
  useEffect(()=>{
-  console.log("called all post fetch");
+  // console.log("called all post fetch");
     allPostFetch()
  },[commentRefreash])
 
  const allPostFetch = async()=>{
-  console.log("refreashed");
+  // console.log("refreashed");
   try {
     const result=await axios.get('http://localhost:3000')
     if(result.status ==200){

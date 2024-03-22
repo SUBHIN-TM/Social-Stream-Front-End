@@ -228,7 +228,7 @@ const Profile=()=>{
       <h1 className="text-center text-xl my-5">Your Posts</h1>
      
       <div className="flex flex-col gap-y-7 items-center p-8 justify-center">
-        {profile.posts.map((post)=>(
+        {profile.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((post)=>(
           <OwnPosts post={post} key={post._id} OWNPOSTS={true}/>
         ))}
        
