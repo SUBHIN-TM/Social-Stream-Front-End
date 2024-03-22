@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { serverLink } from "../../../serverLink"
+import { serverLink } from "../../serverLink"
 
 const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
   const [likeCount, setLikeCount] = useState(post.likes.length)

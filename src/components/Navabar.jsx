@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {viewDetais,clearUser} from "../utils/userSlice"
-import { serverLink } from "../../../serverLink"
+import { serverLink } from "../../serverLink"
 
 const Navbar= ()=> {
 

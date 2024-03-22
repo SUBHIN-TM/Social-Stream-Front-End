@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import Navbar from "./Navabar"
 import axios from "axios"
 import OwnPosts from "./OwnPosts"
-import { serverLink } from "../../../serverLink"
+import { serverLink } from "../../serverLink"
 
 const HomePage=()=>{
     const [allPosts,setAllPosts]=useState([])

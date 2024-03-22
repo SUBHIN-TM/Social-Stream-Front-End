@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OwnPosts from "./OwnPosts";
-import { serverLink } from "../../../serverLink"
+import { serverLink } from "../../serverLink.js"
 
 
 
