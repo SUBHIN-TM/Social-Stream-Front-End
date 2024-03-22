@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
 import { useEffect, useState } from "react"
 import Navbar from "./Navabar"
 import axios from "axios"
 import OwnPosts from "./OwnPosts"
+import env from "dotenv"
+env.config()
 
 const HomePage=()=>{
     const [allPosts,setAllPosts]=useState([])
@@ -16,7 +19,7 @@ const HomePage=()=>{
  const allPostFetch = async()=>{
   // console.log("refreashed");
   try {
-    const result=await axios.get('http://localhost:3000')
+    const result=await axios.get(process.env.SERVER_LINK)
     if(result.status ==200){
         setAllPosts(result.data.allPosts)
         // console.log(result.data.allPosts.map((data) =>data));

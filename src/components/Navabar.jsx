@@ -1,8 +1,11 @@
+/* eslint-disable no-undef */
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {viewDetais,clearUser} from "../utils/userSlice"
+import env from "dotenv"
+env.config()
 
 
 const Navbar= ()=> {
@@ -22,7 +25,7 @@ const Navbar= ()=> {
 
      const homeFetch=async()=>{
         try {
-            let response=await axios.get('http://localhost:3000')
+            let response=await axios.get(process.env.SERVER_LINK)
             if(response.data.details){
                 setUser(response.data.details)
                 dispatch(viewDetais(response.data.details));  //IN REDUX BY VIEWDETALS ACTION DEFINED TO STORE THE VALUE TO DATA STORE.

@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
 import { useEffect, useState } from "react";
 import Navbar from "./Navabar"
 import axios from "axios";
 import OwnPosts from "./OwnPosts";
+import env from "dotenv"
+env.config()
 
 
 const Notifications = () => {
@@ -18,7 +21,7 @@ const Notifications = () => {
     }, [commentRefreash])
 
     const notific = async () => {
-        const response = await axios.get('http://localhost:3000/notifications')
+        const response = await axios.get(`${process.env.SERVER_LINK}/notifications`)
         setNotification(response.data.notifications)
         setAllPosts(response.data.posts)
     }

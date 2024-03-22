@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useEffect, useState } from "react";
 import Navbar from "./Navabar";
 import axios from "axios";
@@ -5,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OwnPosts from "./OwnPosts";
+import env from "dotenv"
+env.config()
+
 
 
 
@@ -29,7 +33,7 @@ const Profile=()=>{
    
     const profileFetch=async()=>{
         try {
-            let response=await axios.get('http://localhost:3000/profile')
+            let response=await axios.get(`${process.env.SERVER_LINK}/profile`)
             setProfile(response.data.profileDetails)        
         } catch (error) {
             console.log(error);
@@ -81,7 +85,7 @@ const Profile=()=>{
         formData.append("image", file);
 
         try {
-            const response = await axios.post('http://localhost:3000/upload', formData, {
+            const response = await axios.post(`${process.env.SERVER_LINK}/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -135,7 +139,7 @@ const Profile=()=>{
         formData.append("image", profilePicFile);
 
         try {
-            const response = await axios.post('http://localhost:3000/profilePicture', formData, {
+            const response = await axios.post(`${process.env.SERVER_LINK}/profilePicture`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

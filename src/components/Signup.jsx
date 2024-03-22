@@ -1,9 +1,13 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/no-unescaped-entities */
 import { useRef, useState } from "react";
 import axios from "axios";
 import {Link,useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import env from "dotenv"
+env.config()
+
 const Signup =()=>{
 const [mailExist,setMailExist] =useState("")
 const [error, setError] = useState("");
@@ -28,7 +32,7 @@ const navigate=useNavigate()
     }
 
     try {   
-       const response=await axios.post('http://localhost:3000/signup',{
+       const response=await axios.post(`${process.env.SERVER_LINK}/signup`,{
         name,mail,password
        });
       //  console.log("response is",response.data);

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/no-unescaped-entities */
 // import React, { useRef } from "react";
 import { useEffect, useState } from "react";
@@ -5,6 +6,8 @@ import axios from "axios";
 import {Link,useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import env from "dotenv"
+env.config()
 
 
 function Login() {
@@ -33,7 +36,7 @@ function Login() {
 
     try {
         // console.log(name , password);
-       const response=await axios.post('http://localhost:3000/login',{
+       const response=await axios.post(`${process.env.SERVER_LINK}/login`,{
         name,password
        });
        if(response.data.invalidUser){

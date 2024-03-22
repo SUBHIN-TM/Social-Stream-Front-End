@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -5,6 +6,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import env from "dotenv"
+env.config()
+
 
 const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
   const [likeCount, setLikeCount] = useState(post.likes.length)
@@ -30,7 +34,7 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
         if (OWNPOSTS) {  //IF CHECKING THE POSTS CALL FROM HOME OR PROFILE.INCASE CALL TO DO LIKE FROM PROFILE THE POST OWNER ID TAKE TOKEN ID AS SAME IN BACK END
           OWNPROFILEPOST = true
         }
-        let response = await axios.post('http://localhost:3000/addLike', { postId: id, userId: userId, ownProfile: OWNPROFILEPOST })
+        let response = await axios.post(`${process.env.SERVER_LINK}/addLike`, { postId: id, userId: userId, ownProfile: OWNPROFILEPOST })
         let post = response.data.result.posts.filter((posts) => posts._id == id)
         setLikeList(post[0].likes)
         setLikeCount(post[0].likes.length)
@@ -53,7 +57,7 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
         if (OWNPOSTS) {  //IF CHECKING THE POSTS CALL FROM HOME OR PROFILE.INCASE CALL TO DO LIKE FROM PROFILE THE POST OWNER ID TAKE TOKEN ID AS SAME IN BACK END
           OWNPROFILEPOST = true
         }
-        let response = await axios.post('http://localhost:3000/addComment', { postId: id, userId: userId, comment: commentContent, ownProfile: OWNPROFILEPOST })
+        let response = await axios.post(`${process.env.SERVER_LINK}/addComment`, { postId: id, userId: userId, comment: commentContent, ownProfile: OWNPROFILEPOST })
         let post = response.data.result.posts.filter((posts) => posts._id == id)
         //  console.log("like count", post[0].comments.length);
         setcommentCount(post[0].comments.length)
