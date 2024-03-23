@@ -54,7 +54,7 @@ const navigate=useNavigate()
         <div className="SIGN border-4 bg-slate-300 h-screen w-screen flex flex-col justify-center items-center ">
       <h1 className="logHeading p-4 my-4 text-4xl italic  ">Registration</h1>
       <div className="SIGNBOX  rounded-lg p-8  flex shadow-2xl w-10/12 sm:w-6/12 md:w-6/12 lg:w-3/12 ">
-        <form onSubmit={handleSubmit} className="pl-5 pt-11" action="">
+        <form onSubmit={handleSubmit} className="pt-11" action="">
           <label className="mr-9 " htmlFor="userName">
             Name
           </label>
