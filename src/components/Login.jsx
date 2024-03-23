@@ -74,7 +74,7 @@ function Login() {
           </label>
           <input className="rounded-lg  mb-8   text-gray-500 hover:border-gray-500" type="password" name="password" id="password" value={password} onChange={(e)=> onChangeFunction(e)} />
           <br />
-          <button type="submit" className="p-1 bg-white font-semibold rounded-md px-4  hover:bg-slate-700 hover:text-white">Login</button>
+          <button type="submit" className="sm:ml-[80px] p-1 bg-white font-semibold rounded-md px-4  hover:bg-slate-700 hover:text-white">Login</button>
           <p className="mt-10 italic">Don't Have an account <span className="text-blue-700"><Link to='/signup'>Signup</Link></span> Here</p>
         </form>
        
