@@ -20,3 +20,7 @@
 .logHeading{
     font-family: Arial, Helvetica, sans-serif;
 }
+
+#toggle{
+    background: rgba(252, 252, 252, 0.655);
+}

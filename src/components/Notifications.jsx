@@ -4,24 +4,30 @@ import Navbar from "./Navabar"
 import axios from "axios";
 import OwnPosts from "./OwnPosts";
 import { serverLink } from "../../serverLink"
+import { useNavigate } from "react-router-dom";
 
 const Notifications = () => {
     const [notifications, setNotification] = useState("")//ALL USER NOTIFICATION WILL COMES HERE
     const [AllPosts, setAllPosts] = useState("") //ALL POSTS CONAIN
     const [commentRefreash, setCommentRefreash] = useState(0) //IT WILL TRIGGER WHEN COMMENT UPDATED,SO IT IS USED IN USEEFFECT THEN IT WILL AGAIN TETCH ALL DATA WITH UPDATED COMMANDS IN ORDER TO LIVE SEE CMD
     const [clickedPost, setclickedPost] = useState("") //IT SAVES NOTIFIACTION CLICKED POST IDS
-
+    const navigate=useNavigate()
 
 
     useEffect(() => {
-        // console.log("called");
         notific()
     }, [commentRefreash])
 
     const notific = async () => {
-        const response = await axios.get(`${serverLink}/notifications`)
-        setNotification(response.data.notifications)
-        setAllPosts(response.data.posts)
+        try {
+            const response = await axios.get(`${serverLink}/notifications`)
+            setNotification(response.data.notifications)
+            setAllPosts(response.data.posts)
+        } catch (error) {
+            console.error(error)
+            navigate('/login')
+        }
+       
     }
 
     if (!notifications) {
