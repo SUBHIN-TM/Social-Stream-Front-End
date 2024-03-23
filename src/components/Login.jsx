@@ -61,18 +61,18 @@ function Login() {
 
   return (
     <div className="LOGIN border-4 bg-slate-300 h-screen w-screen flex flex-col justify-center items-center ">
-      <h1 className="logHeadingp-4 my-4 text-4xl italic  ">Login</h1>
+      <h1 className="logHeadingp-4 my-7 text-4xl italic   ">Login</h1>
       <div className="LOGINBOX   rounded-lg p-8  flex shadow-2xl w-10/12 sm:w-6/12 md:w-6/12 lg:w-3/12 ">
         <form onSubmit={handleSubmit} className="" action="">
-          <label className="mr-9 " htmlFor="userName">
+          <label className="mr-10 " htmlFor="userName">
             Email
           </label>
-          <input className="rounded-lg mb-6 pl-2 text-gray-500 hover:border-gray-500" type="text" name="name" id="name" value={name} onChange={(e)=> onChangeFunction(e)} />
+          <input className="rounded-lg mb-6  text-gray-500 hover:border-gray-500" type="text" name="name" id="name" value={name} onChange={(e)=> onChangeFunction(e)} />
           <br />
-          <label className="mr-10" htmlFor="password">
+          <label className=" mr-3" htmlFor="password">
             Password
           </label>
-          <input className="rounded-lg mt-1 mb-8   text-gray-500 hover:border-gray-500" type="password" name="password" id="password" value={password} onChange={(e)=> onChangeFunction(e)} />
+          <input className="rounded-lg  mb-8   text-gray-500 hover:border-gray-500" type="password" name="password" id="password" value={password} onChange={(e)=> onChangeFunction(e)} />
           <br />
           <button type="submit" className="p-1 bg-white font-semibold rounded-md px-4  hover:bg-slate-700 hover:text-white">Login</button>
           <p className="mt-10 italic">Don't Have an account <span className="text-blue-700"><Link to='/signup'>Signup</Link></span> Here</p>
