@@ -79,10 +79,10 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
 
   // console.log("post",post);
   return (
-    <div className="w-full border ">
+    <div className="w-full sm:w-7/12 md:w-6/12 lg:w-4/12 border ">
       {post.userName && (
         <div className="border-b flex items-center">
-          <div className="ml-2 border  h-10 w-10 rounded-xl"><img src={post.profileImage} className="object-cover h-full w-full rounded-xl" alt="" /></div>
+          <div className="ml-2 border  h-10 w-10 rounded-xl "><img src={post.profileImage} className="object-cover h-full w-full rounded-xl" alt="" /></div>
           <div className="p-3 font-semibold">{post.userName}</div>
         </div>
       )}
@@ -90,7 +90,7 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
 
       <div className="p-4">{post.postName}</div>
       <div className="mt-5 flex justify-center">
-        <img className=" sm:w-10/12 lg:w-11/12 w-10/12 h-[200px]" src={post.postImage} alt="" />
+        <img className=" sm:w-11/12 sm:h-[300px] lg:w-11/12 w-10/12 h-[200px]" src={post.postImage} alt="" />
       </div>
       <div className="flex justify-around p-4">
         {likeList.includes(userRedux.name) ? (<div><span onClick={() => likefuction(post._id, post.userId)} className="cursor-pointer">UnLike 👍</span>({likeCount})</div>) :
