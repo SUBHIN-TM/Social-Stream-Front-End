@@ -4,17 +4,18 @@ import Navbar from "./Navabar"
 import axios from "axios"
 import OwnPosts from "./OwnPosts"
 import { serverLink } from "../../serverLink"
+import Shimmer from "./Shimmer"
 
 const HomePage = () => {
-  const [allPosts, setAllPosts] = useState([])
+  const [allPosts, setAllPosts] = useState()
   const [commentRefreash, setCommentRefreash] = useState(0)
 
 
 
-    useEffect(() => {
-    
-      allPostFetch()
-    }, [commentRefreash])
+  useEffect(() => {
+
+    allPostFetch()
+  }, [commentRefreash])
 
   const allPostFetch = async () => {
     try {
@@ -33,14 +34,19 @@ const HomePage = () => {
 
 
   if (!allPosts) {
+    let counter=4;
+    let div=[];
+    for(let i=0;i<=counter;i++){
+      div.push( <Shimmer key={i}/>)
+    }
     return (
       <>
         <div>
           <Navbar />
         </div >
+       {div}
         
       </>
-
     )
   }
 

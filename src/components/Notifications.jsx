@@ -32,7 +32,11 @@ const Notifications = () => {
 
     if (!notifications) {
         return (
-            <div>No Notificatons</div>
+            <>
+             <Navbar />
+            <div className="text-center mt-5 text-xl italic">No Notificatons</div>
+            </>
+           
         )
     }
 
@@ -51,7 +55,7 @@ const Notifications = () => {
                         <OwnPosts post={filteredPost} key={filteredPost._id} OWNPOSTS={true} setCommentRefreash={setCommentRefreash} />
                     ))}
                 </div>
-                <ul className="mt-5 list-disc ">
+                <ul className=" list-disc ml-5 mt-3">
                     {notifications.map((data) => (
                        <li onClick={() => notificON(data._id) } className="m-1 cursor-pointer" key={data._id}> <span className="text-black">{data.message}</span> <u className="text-blue-600">Your Post</u> </li>
                     ))}

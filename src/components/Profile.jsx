@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OwnPosts from "./OwnPosts";
 import { serverLink } from "../../serverLink.js"
+import Shimmer from "./Shimmer.jsx";
 
 
 
@@ -41,8 +42,25 @@ const Profile = () => {
 
 
     if (!profile) {
+        let divs = [];
+        for (let i = 0; i <= 5; i++) {
+            divs.push(<Shimmer key={i} />)
+        }
         return (
-            <h1>loading</h1>
+            <div>
+                <Navbar />
+                <div className="p-5  flex justify-between sm:w-6/12">
+                    <button onClick={() => showToggle("details")} className="border-2 bg-black text-white rounded-lg p-2">Details</button>
+                    <button onClick={() => showToggle("post")} className="border-2 bg-black text-white rounded-lg p-2">Add New Post</button>
+                    <button onClick={() => changePic()} className="border-2 bg-black text-white rounded-lg p-2">Update Profile Picture</button>
+                </div>
+                <div className="">
+                    <h1 className="text-center">Your Posts</h1> 
+                    <div className="flex flex-col gap-y-7 items-center p-8 justify-center">                          
+                        {divs}       
+                    </div>
+                </div>
+            </div>
         )
     }
 
@@ -211,18 +229,18 @@ const Profile = () => {
                     (
                         <div className="  w-/12 sm:w-6/12 lg:w-4/12 flex h-[300px]  mx-auto  items-center  justify-center">
                             <form onSubmit={picSubmit}>
-                             <div className="border-2 border-black sm:p-10 pl-5 ">
-                                <div className="py-5">
-                                    <label htmlFor="image">Image : </label>
-                                    <input type="file" name="image" id="image" onChange={handleProfilePicChange} />
-                                </div>
-                                <div className="py-5">
-                                    {!isPicLoading ? (<button type="submit" className="border p-2 font-semibold text-white bg-black rounded-lg">Upload</button>) : ("")}
-                                    <button onClick={() => { setProfilePic(false) }} className="ml-6 border p-2 font-semibold text-white bg-black rounded-lg">Close</button>
+                                <div className="border-2 border-black sm:p-10 pl-5 ">
+                                    <div className="py-5">
+                                        <label htmlFor="image">Image : </label>
+                                        <input type="file" name="image" id="image" onChange={handleProfilePicChange} />
+                                    </div>
+                                    <div className="py-5">
+                                        {!isPicLoading ? (<button type="submit" className="border p-2 font-semibold text-white bg-black rounded-lg">Upload</button>) : ("")}
+                                        <button onClick={() => { setProfilePic(false) }} className="ml-6 border p-2 font-semibold text-white bg-black rounded-lg">Close</button>
 
+                                    </div>
                                 </div>
-                                </div>
-                               
+
                             </form>
                         </div>
                     )}
