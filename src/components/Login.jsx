@@ -61,18 +61,18 @@ function Login() {
 
   return (
     <div className="LOGIN border-4 bg-slate-300 h-screen w-screen flex flex-col justify-center items-center ">
-      <h1 className="logHeading p-4 my-4 text-4xl italic ">LOGIN</h1>
-      <div className="LOGINBOX border-[1px] border-black rounded-lg p-14 flex  shadow-2xl h-[300px] ">
-        <form onSubmit={handleSubmit} className="mt-4" action="">
-          <label className="mr-10 " htmlFor="userName">
+      <h1 className="logHeading p-4 mb-4 text-4xl italic  ">Login</h1>
+      <div className="LOGINBOX   rounded-lg p-14 flex  shadow-2xl w-10/12 sm:w-6/12 md:w-6/12 lg:w-3/12">
+        <form onSubmit={handleSubmit} className="mt-4 " action="">
+          <label className="mr-10  " htmlFor="userName">
             Email
           </label>
-          <input className="mb-6 pl-2 text-gray-500 hover:border-gray-500" type="text" name="name" id="name" value={name} onChange={(e)=> onChangeFunction(e)} />
+          <input className="rounded-lg border mt-1 mb-6 pl-2 text-gray-500 hover:border-gray-500" type="text" name="name" id="name" value={name} onChange={(e)=> onChangeFunction(e)} />
           <br />
           <label className="mr-3" htmlFor="password">
             Password
           </label>
-          <input className="mb-8  pl-2 text-gray-500 hover:border-gray-500" type="password" name="password" id="password" value={password} onChange={(e)=> onChangeFunction(e)} />
+          <input className="rounded-lg mt-1 mb-8  pl-2 text-gray-500 hover:border-gray-500" type="password" name="password" id="password" value={password} onChange={(e)=> onChangeFunction(e)} />
           <br />
           <button type="submit" className="p-1 bg-white font-semibold rounded-md px-4 ml-[90px] hover:bg-slate-700 hover:text-white">Login</button>
           <p className="mt-10 italic">Don't Have an account <span className="text-blue-700"><Link to='/signup'>Signup</Link></span> Here</p>

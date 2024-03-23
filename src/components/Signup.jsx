@@ -8,8 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { serverLink } from "../../serverLink"
 
 const Signup =()=>{
-const [mailExist,setMailExist] =useState("")
-const [error, setError] = useState("");
 const navigate=useNavigate()
 
  const nameRef=useRef(null)
@@ -24,10 +22,8 @@ const navigate=useNavigate()
     const password = passwordRef.current.value.trim();
 
     if(!name || !mail || !password){
-        setError("Please fill the fields")
+      toast.error("Please Fill The Fields")
         return;
-    }else{
-        setError("")
     }
 
     try {   
@@ -45,11 +41,9 @@ const navigate=useNavigate()
        }else if(response.data.nameExists){
         toast.error("UserName Already Exists")
        }else if(response.data.mailExists){
-        setMailExist("Email Already Exists")
+        toast.error("Email Already Exists")
        }
-       else{
-        setMailExist("")
-       }
+     
     } catch (error) {
         console.error("Login Error");
     }
@@ -59,26 +53,25 @@ const navigate=useNavigate()
     return(
         <div className="SIGN border-4 bg-slate-300 h-screen w-screen flex flex-col justify-center items-center ">
       <h1 className="logHeading p-4 my-4 text-4xl italic  ">Registration</h1>
-      <div className="SIGNBOX border-[1px] border-black rounded-lg p-8 px-14 flex shadow-2xl   h-[400px]">
-        <form onSubmit={handleSubmit} className="mt-4" action="">
+      <div className="SIGNBOX  rounded-lg p-8  flex shadow-2xl w-10/12 sm:w-6/12 md:w-6/12 lg:w-3/12 ">
+        <form onSubmit={handleSubmit} className="pl-5 pt-11" action="">
           <label className="mr-9 " htmlFor="userName">
             Name
           </label>
-          <input className="mb-6 pl-2 text-gray-500 hover:border-gray-500" type="text" name="name" id="name" ref={nameRef}  />
+          <input className="rounded-lg mb-6 pl-2 text-gray-500 hover:border-gray-500" type="text" name="name" id="name" ref={nameRef}  />
           <br />
           <label className="mr-10" htmlFor="password">
             Email
           </label>
          
-          <input className="  pl-2 text-gray-500 hover:border-gray-500" type="mail" name="mail" id="mail" ref={mailRef}  />
-          {mailExist && <p className="ml-20 text-red-500">{mailExist}</p>}
+          <input className="mb-5 rounded-lg pl-2 text-gray-500 hover:border-gray-500" type="mail" name="mail" id="mail" ref={mailRef}  />
           <br />
           <label className="mr-3 " htmlFor="password">
             Password
           </label>
-          <input className="mb-8 mt-8 pl-2 text-gray-500 hover:border-gray-500" type="password" name="password" id="password" ref={passwordRef} />
+          <input className="rounded-lg mb-8 mt-1 pl-2 text-gray-500 hover:border-gray-500" type="password" name="password" id="password" ref={passwordRef} />
           <br />
-          {error && <p className="text-red-500 mb-2 ml-20">{error}</p>}
+          
        
           <button type="submit" className="p-1 bg-white font-semibold rounded-md px-4 ml-[90px] hover:bg-slate-700 hover:text-white">Signup</button>
           <p className="mt-14 italic">Back To  <span className="text-blue-700"><Link to='/login'>Login Page</Link></span></p>

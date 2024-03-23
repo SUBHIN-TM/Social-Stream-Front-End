@@ -13,11 +13,11 @@ const Shimmer = () => {
                 <div ><span className="cursor-pointer"></span> </div>
             </div>
             <div>
-                <div className="w-12/12 border pt-2">
-                    <div className="my-2 flex justify-around">
+                <div className="w-12/12 border pt-2 h-10">
+                    {/* <div className="my-2 flex justify-around">
                         <div><input className="border-2 bg-gray-200" type="text" /></div>
-                        <div><span className="cursor-pointer border rounded-lg bg-gray-200 text-gray-200 p-1 m-1">Add Comment</span></div>
-                    </div>
+                        <div><span className="cursor-pointer border rounded-lg bg-gray-200 text-gray-200 p-1 m-1 w-5"></span></div>
+                    </div> */}
                 </div>
             </div>
         </div>
