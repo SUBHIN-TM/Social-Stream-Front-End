@@ -79,10 +79,10 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
 
   // console.log("post",post);
   return (
-    <div className="w-[400px] border ">
+    <div className="w-full border ">
       {post.userName && (
-        <div className="border-b h-[50px] flex items-center">
-          <div className="w-[50px] border h-[50px] rounded-xl"><img src={post.profileImage} className="object-cover h-full w-full" alt="" /></div>
+        <div className="border-b flex items-center">
+          <div className="ml-2 border  h-10 w-10 rounded-xl"><img src={post.profileImage} className="object-cover h-full w-full rounded-xl" alt="" /></div>
           <div className="p-3 font-semibold">{post.userName}</div>
         </div>
       )}

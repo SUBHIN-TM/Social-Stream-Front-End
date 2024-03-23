@@ -46,7 +46,7 @@ const HomePage=()=>{
         <>
         <div>
          <Navbar passedPost={allPosts}/>
-         <div className="pl-20 mt-8 flex flex-col gap-y-9">
+         <div className="p-5  w-full sm:pl-20 mt-8 flex flex-col gap-y-10 ">
          {allPosts.map((post)=>(
           <OwnPosts post={post} key={post._id}   setCommentRefreash={setCommentRefreash}  />
         ))}
