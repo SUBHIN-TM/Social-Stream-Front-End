@@ -95,8 +95,8 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
         <img className=" sm:w-11/12 sm:h-[300px] lg:w-11/12 w-10/12 h-[200px]" src={post.postImage} alt="" />
       </div>
       <div className="flex justify-around p-4">
-        {likeList.includes(userRedux.name) ? (<div className="flex"><span onClick={() => likefuction(post._id, post.userId)} className="cursor-pointer text-2xl"><BiSolidLike /> </span><span>({likeCount})</span></div>) :
-          (<div className="flex"><span onClick={() => likefuction(post._id, post.userId)} className="cursor-pointer text-2xl"><BiLike /></span ><span>({likeCount})</span></div>)
+        {likeList.includes(userRedux.name) ? (<div className="flex"><span onClick={() => likefuction(post._id, post.userId)} className="cursor-pointer text-2xl"><BiSolidLike /> </span><span>Liked ({likeCount})</span></div>) :
+          (<div className="flex"><span onClick={() => likefuction(post._id, post.userId)} className="cursor-pointer text-2xl"><BiLike /></span ><span>Like ({likeCount})</span></div>)
         }
 
 
