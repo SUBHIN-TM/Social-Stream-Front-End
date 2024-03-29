@@ -17,7 +17,7 @@ const OwnPosts = ({ post, OWNPOSTS, setCommentRefreash }) => {
 
   const [likeList, setLikeList] = useState(post.likes)
   const [commentBox, setCommentBox] = useState(false)
-  console.log("like statte",post.likes);
+  // console.log("like statte",post.likes);
   const navigate = useNavigate()
 
   // const USER=useSelector((store) => store.user.details) 
