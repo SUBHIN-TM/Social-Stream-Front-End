@@ -55,9 +55,9 @@ const Profile = () => {
                     <button onClick={() => changePic()} className="border-2 bg-black text-white rounded-lg p-2">Update Profile Picture</button>
                 </div>
                 <div className="">
-                    <h1 className="text-center">Your Posts</h1> 
-                    <div className="flex flex-col gap-y-7 items-center p-8 justify-center">                          
-                        {divs}       
+                    <h1 className="text-center">Your Posts</h1>
+                    <div className="flex flex-col gap-y-7 items-center p-8 justify-center">
+                        {divs}
                     </div>
                 </div>
             </div>
@@ -94,6 +94,11 @@ const Profile = () => {
         if (!title || !file) {
             return toast.error("Input Should Be Filled")
         }
+        const validImageTypes = ["image/jpeg", "image/png", "image/jpg","image/gif"];
+        if (!validImageTypes.includes(file.type)) {
+            return toast.error("File type should be JPEG, JPG,GIF, or PNG");
+        }
+
         setIsLoading(true)
 
         const formData = new FormData();
@@ -149,6 +154,12 @@ const Profile = () => {
         if (!profilePicFile) {
             return toast.error("iMAGE Should Be Select")
         }
+        const validImageTypes = ["image/jpeg", "image/png", "image/jpg","image/gif"];
+        if (!validImageTypes.includes(profilePicFile.type)) {
+          
+            return toast.error("File type should be JPEG, JPG,GIF, or PNG");
+        }
+
         setIsPicLoading(true)
 
         const formData = new FormData();
